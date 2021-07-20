@@ -29,7 +29,7 @@ Variables to define the administrator user's credentials the first time the plat
 
 | Variable | Description | Example |
 | -------- | ----------- | ------- |
-| `ADMIN_EMAL` | Email of the default admin user created automatically at the first time the Bugzilla is instantiated. | `admin@bugzilla.org` |
+| `ADMIN_EMAIL` | Email of the default admin user created automatically at the first time the Bugzilla is instantiated. | `admin@bugzilla.org` |
 | `ADMIN_PASSWORD` | Password of the default admin user created automatically at the first time the Bugzilla is instatiated. | `password` |
 
 #### External Service Port
@@ -43,7 +43,8 @@ Variables to define the port of service to be exposed:
 
 | Variable | Description | Example |
 | -------- | ----------- | ------- |
-| `MAINTAINER` | Maintainer email of the bugzilla instance.  | `smtp.gmail.com:465` |
+| `SMTP_SERVER` | SMTP host for sending emails.  | `smtp.gmail.com:465` |
+| `MAINTAINER` | Maintainer email of the bugzilla instance.  | `admin@bugzilla.com` |
 | `MAILFROM` | Email that will send emails. | `admin@bugzilla.com` |
 | `SMTP_USERNAME` | Registered email on the SMTP server. | `admin@bugzilla.com` |
 | `SMTP_PASSWORD` | Password for the email registered on the SMTP server. | `secret` |
@@ -51,5 +52,6 @@ Variables to define the port of service to be exposed:
 ### Databases setup
 | Variable | Description | Example |
 | -------- | ----------- | ------- |
-| `MYSQL_ADMIN_USER` | Username of the root user of the MySQL that has permission to create other users. | `admin` |
 | `MYSQL_ADMIN_PASS` | Password of the root user of the MySQL that has permission to create other users. | `a6m1n*s3cr7t94ssw0rd` |
+| `MYSQL_USER` | Username of the root user of the MySQL that has permission to access the bug database. | `admin` |
+| `MYSQL_PASS` | Password of the root user of the MySQL that has permission to access the bug database. | `a6m1n*s3cr7t94ssw0rd` |

@@ -14,8 +14,8 @@ services:
       - ADMIN_EMAIL=${ADMIN_EMAIL}
       - ADMIN_PASSWORD=${ADMIN_PASSWORD}
       - MYSQL_DB=bugs
-      - MYSQL_USER=${MYSQL_ADMIN_USER}
-      - MYSQL_PWD=${MYSQL_ADMIN_PASS}
+      - MYSQL_USER=${MYSQL_USER}
+      - MYSQL_PWD=${MYSQL_PASS}
       - SMTP_SERVER=${SMTP_SERVER}
       - MAINTAINER=${MAINTAINER}
       - MAILFROM=${MAILFROM}
@@ -28,8 +28,8 @@ services:
     image: mysql:5.6
     environment:
       - MYSQL_DATABASE=bugs
-      - MYSQL_USER=${MYSQL_ADMIN_USER}
-      - MYSQL_PASSWORD=${MYSQL_ADMIN_PASS}
+      - MYSQL_USER=${MYSQL_USER}
+      - MYSQL_PASSWORD=${MYSQL_PASS}
       - MYSQL_ROOT_PASSWORD=${MYSQL_ADMIN_PASS}
     volumes:
       - mysql-bugzilla-data:/var/lib/mysql

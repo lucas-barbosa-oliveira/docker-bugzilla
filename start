@@ -8,6 +8,11 @@ DEFAULT_MYSQL_USER=bugzilla
 DEFAULT_MYSQL_PWD=1234
 cd /var/www/html
 
+echo 'Wating mysql server startup...'
+while [ $(nc -vz ${MYSQL_HOST:-$DEFAULT_MYSQL_HOST} 3306 2> /dev/null; echo $?) -ne 0 ]; do
+sleep 3
+done > /dev/null
+
 # Substitute values into bugzilla localconfig
 sed --in-place -f - localconfig <<SED
 s/webservergroup *= *'[a-zA-Z0-9.]\+'/webservergroup = '${WEBSERVER_GROUP:-$DEFAULT_WEBSERVER_GROUP}'/

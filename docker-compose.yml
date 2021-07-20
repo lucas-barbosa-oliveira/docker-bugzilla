@@ -4,8 +4,6 @@ services:
     container_name: 'bugzilla'
     restart: always
     build: .
-    links:
-      - mysql-bugzilla:mysql-host
     ports:
       - "${PORT:-8080}:80"
     depends_on:
@@ -13,6 +11,7 @@ services:
     environment:
       - ADMIN_EMAIL=${ADMIN_EMAIL}
       - ADMIN_PASSWORD=${ADMIN_PASSWORD}
+      - MYSQL_HOST=mysql-bugzilla
       - MYSQL_DB=bugs
       - MYSQL_USER=${MYSQL_USER}
       - MYSQL_PWD=${MYSQL_PASS}

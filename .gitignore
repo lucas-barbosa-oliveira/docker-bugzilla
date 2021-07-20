@@ -1,0 +1,17 @@
+.DS_Store
+
+# IDE
+.idea
+.history
+
+# Environment variables file
+.env
+
+# Certificates and keys directories
+.certs
+*.pem
+*.crt
+*.key
+*.csr
+certs
+encryptionKeyFile

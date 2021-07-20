@@ -29,6 +29,12 @@ export MAIL_DELIVERY_METHOD="${MAIL_DELIVERY_METHOD:-SMTP}"
 
 perl -p -i -e 's/\$\{([^}]+)\}/defined $ENV{$1} ? $ENV{$1} : $&/eg' data/params
 
+cat << EOF > /var/www/html/checksetup_answers.txt
+\$answer{'ADMIN_EMAIL'} = '${ADMIN_EMAIL}';
+\$answer{'ADMIN_PASSWORD'} = '${ADMIN_PASSWORD}';
+\$answer{'ADMIN_REALNAME'} = 'admin';
+EOF
+
 # Verify bugzilla setup
 sleep 5 && ./checksetup.pl checksetup_answers.txt
 

@@ -1,0 +1,40 @@
+version: '3.7'
+services:
+  bugzilla:
+    container_name: 'bugzilla'
+    restart: always
+    build: .
+    links:
+      - mysql-bugzilla:mysql-host
+    ports:
+      - "${PORT:-8080}:80"
+    depends_on:
+      - mysql-bugzilla
+    environment:
+      - ADMIN_EMAIL=${ADMIN_EMAIL}
+      - ADMIN_PASSWORD=${ADMIN_PASSWORD}
+      - MYSQL_DB=bugs
+      - MYSQL_USER=${MYSQL_ADMIN_USER}
+      - MYSQL_PWD=${MYSQL_ADMIN_PASS}
+      - SMTP_SERVER=${SMTP_SERVER}
+      - MAINTAINER=${MAINTAINER}
+      - MAILFROM=${MAILFROM}
+      - SMTP_USERNAME=${SMTP_USERNAME}
+      - SMTP_PASSWORD=${SMTP_PASSWORD}
+
+  mysql-bugzilla:
+    container_name: 'mysql-bugzilla'
+    restart: always
+    image: mysql:5.6
+    environment:
+      - MYSQL_DATABASE=bugs
+      - MYSQL_USER=${MYSQL_ADMIN_USER}
+      - MYSQL_PASSWORD=${MYSQL_ADMIN_PASS}
+      - MYSQL_ROOT_PASSWORD=${MYSQL_ADMIN_PASS}
+    volumes:
+      - mysql-bugzilla-data:/var/lib/mysql
+
+volumes:
+  mysql-bugzilla-data:
+    name: mysql-bugzilla-data
+

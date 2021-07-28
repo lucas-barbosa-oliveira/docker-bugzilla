@@ -20,6 +20,7 @@ services:
       - MAILFROM=${MAILFROM}
       - SMTP_USERNAME=${SMTP_USERNAME}
       - SMTP_PASSWORD=${SMTP_PASSWORD}
+      - URLBASE=${URLBASE}
 
   mysql-bugzilla:
     container_name: 'mysql-bugzilla'

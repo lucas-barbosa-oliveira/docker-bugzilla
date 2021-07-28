@@ -22,6 +22,12 @@ Copy and paste with the file `.env.example` with the name `.env` to make the Doc
 ```sh
 cp .env.example .env
 ```
+####  External Service URL
+Variables to define the URL of services to be exposed.
+
+| Variable | Description | Example |
+| -------- | ----------- | ------- |
+| `URLBASE` |  The application URL. | `localhost` |
 
 #### Authorization/Authentication Setup
 
